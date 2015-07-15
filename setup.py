@@ -140,9 +140,14 @@ is_missing_libraries = False
 
 
 # Get the config for the libraries that we require.
+print('###################################')
+print('### find library configurations ###')
+print('###################################')
 for name in 'libavformat', 'libavcodec', 'libavdevice', 'libavutil', 'libswscale':
     config = library_config(name)
     if config:
+        print('lib config: ')
+        print(config)
         update_extend(extension_extra, config)
         config_macros.append(('PYAV_HAVE_' + name.upper(), '1'))
     else:
